@@ -5,12 +5,15 @@ export default class ProductsController {
 
     async index({view}:HttpContext){
         // const mostPicked=await Product.query().orderBy('')
-        const newest=await Product.query().orderBy('created_at').limit(3)
+        const newest=await Product.query().orderBy('created_at', 'desc').limit(3)
         const allProducts=await Product.all()
         return view.render('pages/products',{newest, allProducts})
     }
 
-
+    async show({params, view}:HttpContext){
+        const product=await Product.findOrFail(params.id)
+        return view.render('pages/details', {product})
+    }
 
     //for seeding purposes, we can change later to use adonis seeding but this'll be sufficient
     async seed(){

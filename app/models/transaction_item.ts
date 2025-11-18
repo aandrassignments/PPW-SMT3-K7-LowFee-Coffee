@@ -1,18 +1,24 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, belongsTo} from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import Transaction from './transaction.js'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import Product from './product.js'
-import User from './user.js'
 
-export default class Wishlist extends BaseModel {
+export default class TransactionItem extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare userId:number
+  declare transactionId:number
 
   @column()
   declare productId:number
+
+  @column()
+  declare quantity:number
+
+  @column()
+  declare priceEach:number
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -20,13 +26,13 @@ export default class Wishlist extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @belongsTo(()=>User,{
-    foreignKey:'userId', //column name here
-    localKey:'id' //column in user table
+  @belongsTo(()=>Transaction,{
+    foreignKey:'transactionId',
+    localKey:'id'
   })
-  declare user: BelongsTo<typeof User>
+  declare transaction: BelongsTo<typeof Transaction>
 
-  @belongsTo(()=>Product, {
+  @belongsTo(()=>Product,{
     foreignKey:'productId',
     localKey:'id'
   })

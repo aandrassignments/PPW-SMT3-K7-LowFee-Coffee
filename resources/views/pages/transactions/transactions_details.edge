@@ -1,0 +1,16 @@
+@layout.app({title: 'Transaction Details'})
+
+@slot('main')
+  <h1>Transaction #{{ transaction.id }}</h1>
+  <p>Status: {{ transaction.paymentStatus }}</p>
+  <p>Total: {{ transaction.totalPrice }}</p>
+
+  <h2>Items:</h2>
+  @each(item in transaction.items)
+    <div class="">
+      <p>{{ item.product.name }} x {{ item.quantity }}</p>
+      <p>Price: {{ item.priceEach }}</p>
+      <p>Subtotal: {{ item.priceEach * item.quantity }}</p>
+    </div>
+  @end
+@end

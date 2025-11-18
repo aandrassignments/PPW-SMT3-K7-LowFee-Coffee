@@ -10,14 +10,25 @@
     </section>
 
     <main class="cart-container">
-      <div id="cartItems" class="cart-grid"></div>
+      <div id="cartItems" class="cart-grid">
+        @each(item in cartItems)
+          <div class="cart-items">
+            <h3>{{item.product.name}}</h3>
+            <p>Qty : {{item.quantity}}</p>
+            <p>Price : $/IDR{{item.product.price}}</p>
+            <p>Subtotal : $/IDR {{item.product.price*item.quantity}}</p>
+          </div>
+        @end
+      </div>
+
       <div class="cart-summary">
-        <p>Total: <span id="cartTotal">$0</span></p>
-        <button id="checkoutBtn">Checkout</button>
+        <p>Total: <span id="cartTotal">${{total}}</span></p>
+        <form action="/transaction" method="post">
+          {{csrfField()}}
+          <button id="checkoutBtn">Checkout</button>
+        </form>
       </div>
     </main>
 
-    {{-- <script src="cart.js"></script> --}}
-    @vite('resources/js/cart.js')
   @endslot
 @end

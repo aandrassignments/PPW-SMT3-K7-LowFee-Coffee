@@ -1,0 +1,17 @@
+@layout.app({title:'register'})
+    @slot('meta')
+        @vite(['resources/css/footerheader.css'])
+    @endslot
+    @slot('main')
+        <form action="/users" method="post">
+            {{ csrfField() }}
+            <label>Username</label>
+            <input type="text" name="fullName">
+            <label>Email</label>
+            <input type="text" name="email">
+            <label>Password</label>
+            <input type="password" name="password">
+            <button type="submit">Register</button>
+        </form>
+    @endslot
+@end

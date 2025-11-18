@@ -27,23 +27,22 @@
             <h2>Newest Release</h2>
             <div class="grid grid-newest">
                 @each(product in newest)
-                    <a href="#" class="card" style="background-image:url('{{product.imageUrl}}');">
+                    <a href="/products/{{product.id}}" class="card" style="background-image:url('{{product.imageUrl}}');">
                         <div class="card-text">
                             <h3>{{product.name}}</h3>
                             <p>Rp.{{product.price}}</p>
                         </div>
-                        <form method="POST" action="/wishlist">
+                        <form method="post" action="/wishlist">
                             {{ csrfField() }}
                             <input type="hidden" name="productId" value="{{product.id}}">
                             <button type="submit" class="add-to-wishlist">❤️</button>
                         </form>
-                        <button 
-                        class="add-to-cart"
-                        data-name="{{product.name}}"
-                        data-price="{{product.price}}"
-                        data-image="{{product.imageUrl}}">
-                        🛒
-                        </button>
+                        <form action="/cart" method="post">
+                            {{csrfField()}}
+                            <input type="hidden" name="productId" value="{{product.id}}">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="add-to-cart">🛒</button>
+                        </form>
                     </a>
                 @endeach
             </div>

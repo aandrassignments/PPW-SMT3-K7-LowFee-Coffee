@@ -1,0 +1,13 @@
+@layout.app({title: 'Your Transaction'}) 
+@slot('main')
+    <h1>Your Transaction</h1>
+    @each(transaction in transactions)
+        <div class="">
+            <p>ID: {{ transaction.id }}</p>
+            <p>Total: {{ transaction.totalPrice }}</p>
+            <p>Status: {{ transaction.paymentStatus }}</p>
+            <a href="/transaction/{{ transaction.id }}">View details</a>
+        </div>
+    @endeach
+@endslot
+@end
