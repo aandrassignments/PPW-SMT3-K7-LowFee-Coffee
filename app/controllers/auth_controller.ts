@@ -5,7 +5,7 @@ import { LoginValidator } from '#validators/login_validator'
 
 export default class AuthController {
     async showRegister({view}:HttpContext){
-        return view.render('pages/register')
+        return view.render('pages/users/register')
     }
 
     async register({request, auth, response}:HttpContext){
@@ -28,6 +28,6 @@ export default class AuthController {
 
     async logout({auth, response}:HttpContext){
         await auth.use('web').logout()
-        return response.redirect()
+        return response.redirect('/')
     }
 }

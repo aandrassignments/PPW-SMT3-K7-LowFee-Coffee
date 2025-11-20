@@ -1,8 +1,24 @@
-@layout.app({title:'profile'}) 
+@layout.app({title:'Edit Profile'}) 
  @slot('meta')
-    //@vite([''])
  @endslot
  @slot('main')
-    <h1>This is Temporary Edit Page</h1>
- @end
+   <div class="edit-profile">
+      <h1>Edit Profile</h1>
+      <form action="/users?_method=put" method="post">
+         {{csrfField()}}
+         <label>Full Name</label>
+         <input type="text" name="fullName" value="{{user.fullName}}">
+         <label>Email</label>
+         <input type="email" name="email" value="{{user.email}}">
+         <hr>
+         <h3>Change Password (optional)</h3>
+         <p class="small-note">Leave this empty if you don't want to change your password.</p>
+         <label>New Password</label>
+         <input type="password" name="password">
+         <label>Confirm Password</label>
+         <input type="password" name="password_confirmation">
+         <button type="submit">Save Changes</button>
+      </form>
+   </div>
+ @endslot
 @end

@@ -10,18 +10,6 @@
             <h1>Our Products</h1>
         </section>
 
-        <section class="products">
-        <div class="section-container">
-            <h2>Most Picked</h2>
-            <div class="main-categories">
-                <div class="category">
-                    <img src="images/coffeecup.jpg" alt="Coffee">
-                    <p>Coffee</p>
-                </div>
-            </div>
-        </div>
-        </section>
-
         <section class="newest">
         <div class="section-container">
             <h2>Newest Release</h2>
@@ -51,10 +39,10 @@
 
         <section class="all-categories">
         <div class="section-container">
-            <h2>All Categories</h2>
+            <h2>All Products</h2>
             <div class="category-grid">
                 @each(product in allProducts)
-                    <a href="#" class="category-card" style="background-image:url('{{product.imageUrl}}');">
+                    <a href="/products/{{product.id}}" class="category-card" style="background-image:url('{{product.imageUrl}}');">
                         <p>{{product.name}}</p>
                     </a>
                 @end

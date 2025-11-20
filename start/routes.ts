@@ -4,10 +4,10 @@ import { middleware } from './kernel.js'
 //USER SECTION
 const UsersController=()=>import('#controllers/users_controller')
 router.group(()=>{
-    router.get('/:id', [UsersController, 'show'])
-    router.get('/:id/edit', [UsersController, 'edit'])
-    router.put('/:id', [UsersController, 'update'])
-    router.delete('/:id', [UsersController, 'destroy'])
+    router.get('/', [UsersController, 'show'])
+    router.get('/edit', [UsersController, 'edit'])
+    router.put('/', [UsersController, 'update'])
+    router.delete('/', [UsersController, 'destroy'])
 }).prefix('/users').use(middleware.auth())
 
 //PRODUCT SECTION
@@ -24,7 +24,7 @@ router.group(() => {
   router.get('/', [WishlistController, 'index'])
   router.post('/', [WishlistController, 'store'])
   router.delete('/:id', [WishlistController, 'destroy'])
-}).prefix('/wishlists').use(middleware.auth())
+}).prefix('/wishlist').use(middleware.auth())
 
 //CART SECTION
 const CartsController=()=>import('#controllers/carts_controller')
@@ -33,7 +33,7 @@ router.group(()=>{
     router.post('/', [CartsController, 'store'])
     router.put('/:id', [CartsController, 'update'])
     router.delete('/:id', [CartsController, 'destroy'])
-}).prefix('/carts').use(middleware.auth())
+}).prefix('/cart').use(middleware.auth())
 
 //TRANSACTION SECTION
 const TransactionsController=()=>import('#controllers/transactions_controller')
@@ -51,7 +51,7 @@ router.group(()=>{
     router.get('/login', [AuthController, 'showLogin'])
     router.post('/login', [AuthController, 'login'])
 }).use(middleware.guest())
-router.post('/logout', [AuthController, 'logout']).use(middleware.guest())
+router.post('/logout', [AuthController, 'logout']).use(middleware.auth())
 
 //ADMIN SECTION
 const AdminUserController=()=>import('#controllers/admin/admin_users_controller')
@@ -71,9 +71,16 @@ router.group(()=>{
         router.get('/', [AdminProductController, 'index'])
         router.get('/create', [AdminProductController, 'create'])
         router.post('/', [AdminProductController, 'store'])
-        router.get('/', [AdminProductController, 'edit'])
-        router.put('/', [AdminProductController, 'update'])
-        router.delete('/', [AdminProductController, 'destroy'])
+        router.get('/:id', [AdminProductController, 'edit'])
+        router.put('/:id', [AdminProductController, 'update'])
+        router.delete('/:id', [AdminProductController, 'destroy'])
     }).prefix('/products')
 
 }).prefix('/admin').use([middleware.auth(),middleware.admin()])
+
+//HOME SECTION
+const HomeController=()=>import('#controllers/home_controller')
+router.get('/', [HomeController, 'index'])
+
+//STATIC SECTION
+router.on('/about').render('pages/static/about')

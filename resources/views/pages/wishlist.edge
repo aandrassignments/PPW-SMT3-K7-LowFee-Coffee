@@ -15,6 +15,10 @@
         <img src="{{wishlist.product.imageUrl}}">
         <p>{{wishlist.product.name}}</p>
         <p>{{wishlist.product.price}}</p>
+        <form action="/wishlist/{{wishlist.id}}?_method=DELETE" method="POST">
+          {{csrfField()}}
+          <button type="submit">Remove</button>
+        </form>
       </div>
     @endeach
   </div>

@@ -5,23 +5,23 @@ import { CartStoreValidator, CartUpdateValidator } from '#validators/cart_valida
 
 export default class CartsController {
 
-    async index({view}:HttpContext){
-        const userId=1 //change this once auth is working
-        const cartItems=await Cart.query().where('userId', userId).preload('product')
+    async index({view, auth}:HttpContext){
+        const user=auth.user!
+        const cartItems=await Cart.query().where('userId', user.id).preload('product')
         const total=cartItems.reduce((sum,item)=>sum+(item.product.price * item.quantity),0)
         return view.render('pages/cart', {cartItems, total})
     }
 
-    async store({request, response}:HttpContext){
+    async store({request, response, auth}:HttpContext){
+        const user=auth.user!
         const data = await request.validateUsing(CartStoreValidator)
-        const userId=1
         const product=await Product.findOrFail(data.productId)
 
         if (data.quantity>product.stock){
             return response.redirect('/cart')
         }
 
-        const existingCartItem=await Cart.query().where('userId', userId).where('productId', data.productId).first()
+        const existingCartItem=await Cart.query().where('userId', user.id).where('productId', data.productId).first()
 
         if (existingCartItem){
             const newQuantity=existingCartItem.quantity+data.quantity
@@ -35,7 +35,7 @@ export default class CartsController {
             return response.redirect('/cart')
         }
 
-        await Cart.create({userId, productId:data.productId, quantity:data.quantity})
+        await Cart.create({userId:user.id, productId:data.productId, quantity:data.quantity})
     }
 
     async update({params, request, response}:HttpContext){
@@ -51,8 +51,12 @@ export default class CartsController {
         return response.redirect('/cart')
     }
 
-    async destroy({params, response}:HttpContext){
+    async destroy({params, response, auth}:HttpContext){
+        const user=auth.user!
         const cartItem=await Cart.findOrFail(params.id)
+        if (cartItem.userId !== user.id){
+            return response.unauthorized('Not Allowed')
+        }
         await cartItem.delete()
         return response.redirect('/cart')
     }

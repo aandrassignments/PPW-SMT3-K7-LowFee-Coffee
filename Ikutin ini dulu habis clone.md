@@ -13,6 +13,10 @@
 11. node ace serve --hmr
 12. (ketik di browsernya) http://localhost:3333/seed (habis itu balik ke home page)
 
+**note buat bikin admin**
+1. const User = await import('#models/user')
+2. await User.default.create({full_name: 'Admin',email: 'admin@example.com',password: 'password123',role: 'admin'})
+
 **note buat otak-atik node ace repl**
 import dulu yg dibutuhin misalkan model :
 const Cart = (await import('#models/cart')).default **tinggal tuker aja variablenya, jgn lupa capital**

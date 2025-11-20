@@ -1,8 +1,46 @@
-@layout.app({title:'profile'}) 
+@layout.app({title:product.name}) 
  @slot('meta')
     //@vite([''])
  @endslot
+
  @slot('main')
-    <h1>This is Temporary Details Page</h1>
+
+   {{--image--}}
+   <div class="img-wrap">
+      <img src="{{product.imageUrl}}" alt="{{product.name}}">
+   </div>
+
+   <div class="info-wrapg">
+      <h1>{{product.name}}</h1>
+      <p class="price">Rp/$ {{product.price}}</p>
+      <p class="stock">Stock : {{product.stock}}</p>
+      <p class="description">{{product.description}}</p>
+      {{--quantity button--}}
+      <div class="quantity-section">
+         <label for="qty">Quantity : </label>
+         <input
+            type="number"
+            id="qty"
+            name="qty"
+            value="1"
+            min="1"
+            max="{{product.stock}}"
+            >
+      </div>
+      
+      <div class="action-buttons">
+         <form action="/carts/{{product.id}}" method="post">
+            {{csrfField()}}
+            <input type="hidden" name="quantity" value="1" id="qty-hidden">
+            <button type="submit" class="btn btn-cart">Add to cart</button>
+         </form>
+
+         <form action="/wishlists/{{product.id}}" method="post">
+            {{csrfField()}}
+            <button type="submit" class="btn btn-wishlist">Add to wishlist</button>
+         </form>
+      </div>
+   </div>
+   
  @end
 @end

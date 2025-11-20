@@ -1,15 +1,14 @@
 @layout.app({title:'profile'}) 
  @slot('meta')
-    //@vite([''])
+
  @endslot
  @slot('main')
     <section class="profile">
         <h1>{{user.fullName}}</h1>
         <p>{{user.email}}</p>
-        <a href="/users/{{user.id}}/edit">Edit Profile</a>
-        <form action="/users/{{user.id}}" method="post">
+        <a href="/users/edit">Edit Profile</a>
+        <form action="/users?_method=delete" method="post">
             {{csrfField()}}
-            <input type="hidden" name="_method" value="delete">
             <button type="submit">Delete Account</button>
         </form>
     </section>

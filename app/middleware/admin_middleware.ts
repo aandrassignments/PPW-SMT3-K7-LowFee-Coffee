@@ -3,15 +3,11 @@ import type { NextFn } from '@adonisjs/core/types/http'
 
 export default class AdminMiddleware {
   async handle(ctx: HttpContext, next: NextFn) {
-    /**
-     * Middleware logic goes here (before the next call)
-     */
-    console.log(ctx)
+    const user = ctx.auth.user
+    
+    if (!user || user.role != `admin`)
+      return ctx.response.forbidden({})
 
-    /**
-     * Call next method in the pipeline and return its output
-     */
-    const output = await next()
-    return output
+    await next()
   }
 }

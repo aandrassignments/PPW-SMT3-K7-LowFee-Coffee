@@ -4,22 +4,23 @@ import Transaction from '#models/transaction'
 import TransactionItem from '#models/transaction_item'
 
 export default class TransactionsController {
-    async index({view}:HttpContext){
-        const userId = 1 //change to auth later
-        const transactions=await Transaction.query().where('userId', userId).preload('items', (query)=>query.preload('product')).orderBy('created_at', 'desc')
+    async index({view,auth}:HttpContext){
+        const user=auth.user!
+        const transactions=await Transaction.query().where('userId', user.id).preload('items', (query)=>query.preload('product')).orderBy('created_at', 'desc')
         return view.render('pages/transactions/transactions_index',{transactions})
     }
 
-    async show({view, params}:HttpContext){
-        const transaction = await Transaction.query().where('id',params.id).preload('items', (query)=>query.preload('product')).firstOrFail() // when auth is working add where('userId', userId)
+    async show({view, params, auth}:HttpContext){
+        const user=auth.user!
+        const transaction = await Transaction.query().where('id',params.id).where('userId', user.id).preload('items', (query)=>query.preload('product')).firstOrFail()
         return view.render('pages/transactions/transactions_details',{transaction})
     }
 
-    async store ({response}:HttpContext){ //might need trx later ngl
-        const userId=1
-        const cartItems=await Cart.query().where('userId', userId).preload('product')
+    async store ({response, auth}:HttpContext){ //might need trx later ngl
+        const user=auth.user!
+        const cartItems=await Cart.query().where('userId', user.id).preload('product')
         if (cartItems.length===0){
-            return response.badRequest({message:'cart is empty'}) //this'll flashbang the user with white blank page...
+            return response.redirect('/cart')
         }
 
         let totalPrice=0
@@ -27,15 +28,15 @@ export default class TransactionsController {
         for (const item of cartItems){
             const product=item.product
             if (!product){
-                return response.badRequest({message: `Product not found for cart item ${item.id}`}) //this'll flashbang the user with white blank page...
+                return response.redirect('/cart')
             }
             if (item.quantity>product.stock){
-                return response.badRequest({message: `Not enough stock for ${product.name}`}) //this'll flashbang the user with white blank page...
+                return response.redirect('/cart')
             }
             totalPrice+=product.price*item.quantity
         }
 
-        const transaction=await Transaction.create({userId, totalPrice, paymentStatus: 'pending'})
+        const transaction=await Transaction.create({userId:user.id, totalPrice, paymentStatus: 'pending'})
 
         for (const item of cartItems){
             const product=item.product
@@ -44,7 +45,7 @@ export default class TransactionsController {
             await product.save()
         }
 
-        await Cart.query().where('userId', userId).delete()
+        await Cart.query().where('userId', user.id).delete()
         return response.redirect(`/transactions/${transaction.id}`)
     }
 }

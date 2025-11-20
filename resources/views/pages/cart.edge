@@ -17,13 +17,18 @@
             <p>Qty : {{item.quantity}}</p>
             <p>Price : $/IDR{{item.product.price}}</p>
             <p>Subtotal : $/IDR {{item.product.price*item.quantity}}</p>
+            <form action="/cart/{{item.id}}?_method=DELETE" method="POST">
+              {{csrfField()}}
+              {{-- <input type="hidden" name="_method" value="DELETE"> --}}
+              <button type="submit">Remove</button>
+            </form>
           </div>
         @end
       </div>
 
       <div class="cart-summary">
         <p>Total: <span id="cartTotal">${{total}}</span></p>
-        <form action="/transaction" method="post">
+        <form action="/transactions" method="post">
           {{csrfField()}}
           <button id="checkoutBtn">Checkout</button>
         </form>
