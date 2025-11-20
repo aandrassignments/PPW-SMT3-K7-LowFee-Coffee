@@ -15,8 +15,8 @@ const ProductsController=()=>import('#controllers/products_controller')
 router.group(()=>{
     router.get('/', [ProductsController, 'index'])
     router.get('/:id', [ProductsController, 'show'])
-    router.get('/seed', [ProductsController, 'seed'])// for seeding purposes
 }).prefix('/products')
+router.get('/seed', [ProductsController, 'seed'])// for seeding purposes
 
 //WISHLIST SECTION
 const WishlistController=()=>import('#controllers/wishlists_controller')
