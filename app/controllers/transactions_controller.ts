@@ -42,6 +42,7 @@ export default class TransactionsController {
             const product=item.product
             await TransactionItem.create({transactionId:transaction.id, productId:product.id, quantity:item.quantity, priceEach:product.price})
             product.stock-=item.quantity
+            product.sold+=item.quantity
             await product.save()
         }
 

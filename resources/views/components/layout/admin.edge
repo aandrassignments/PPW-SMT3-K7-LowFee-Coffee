@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {{-- @vite('resources/css/') --}}
+    @if($slots.meta) 
+        {{{await $slots.meta()}}}
+    @endif
+</head>
+
+<body>
+    <div class="admin-wrapper">
+        @if($slots.sidebar) 
+            <aside class="admin-sidebar">
+                {{{await $slots.sidebar()}}}
+            </aside>                
+        @endif
+        <main class="admin-content">
+            {{{await $slots.main()}}}
+        </main>
+    </div>
+</body>
+</html>

@@ -12,10 +12,16 @@ export default class Product extends BaseModel {
   declare description:string|null
 
   @column()
+  declare category:string|null
+
+  @column()
   declare price:number
 
   @column()
   declare stock:number
+
+  @column()
+  declare sold:number
 
   @column()
   declare imageUrl: string|null

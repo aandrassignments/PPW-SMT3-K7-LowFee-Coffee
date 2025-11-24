@@ -1,7 +1,27 @@
-@layout.app([title:'']) 
-    @slot('main')
-    <section>
-        <h1>temp dashboard</h1>
-    </section>
-    @endslot
+@layout.admin({title:'dashboard'})
+
+@slot('sidebar')
+    @include('partials/sidebar.edge')
+@endslot
+
+@slot('main')
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+        <div class="card">
+            <h2>Total Users</h2>
+            <p>{{ usersCount }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Total Products</h2>
+            <p>{{ productsCount }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Total Income</h2>
+            <p>{{ totalIncome }}</p>
+        </div>
+    </div>
+@endslot
 @end

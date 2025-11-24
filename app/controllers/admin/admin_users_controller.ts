@@ -4,18 +4,18 @@ import type { HttpContext } from '@adonisjs/core/http'
 
 export default class AdminUserController{
     async index({view}:HttpContext){
-        const user = await User.all()
-        return view.render('admin/users/index', {user})
+        const users = await User.all()
+        return view.render('pages/admin/users/index', {users})
     }
 
     async show({params, view}:HttpContext){
         const user = await User.findOrFail(params.id)
-        return view.render('admin/users/show',{user})
+        return view.render('pages/admin/users/show',{user})
     }
 
     async edit({params,view}:HttpContext){
         const user = await User.findOrFail(params.id)
-        return view.render('admin/users/edit', {user})
+        return view.render('pages/admin/users/edit', {user})
     }
 
     async update ({params, request, response}:HttpContext){
@@ -24,12 +24,12 @@ export default class AdminUserController{
         // const data = request.only(['fullName', 'email', 'role'])
         user.merge(data)
         await user.save()
-        return response.redirect()
+        return response.redirect('pages/admin/users')
     }
 
     async destroy({params, response}:HttpContext){
         const user = await User.findOrFail(params.id)
         await user.delete()
-        return response.redirect()
+        return response.redirect('pages/admin/users')
     }
 }

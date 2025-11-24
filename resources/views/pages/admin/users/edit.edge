@@ -1,0 +1,25 @@
+@layout.admin({title:''}) 
+@slot('sidebar')
+    @include('partials/sidebar.edge')
+@endslot
+@slot('main')
+    <h1>Edit User</h1>
+    <form action="/admin/users/{{user.id}}" method="post">
+        {{csrfField()}}
+        <div>
+            <label class="">Full Name</label>
+            <input type="text" name="fullName" value="{{user.fullName}}">
+
+            <label class="">Email</label>
+            <input type="email" name="email" value="{{user.email}}">
+
+            <label class="">Role</label>
+            <select name="role">
+                <option value="user" {{user.role==='user'?'selected' : ''}}>User</option>
+                <option value="admin {{user.role==='admin'?'selected' : ''}}">Admin</option>
+            </select>
+        </div>
+        <button type="submit">Save Changes</button>
+    </form>
+@endslot
+@end

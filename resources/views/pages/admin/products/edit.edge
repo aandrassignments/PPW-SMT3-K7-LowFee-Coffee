@@ -1,0 +1,29 @@
+@layout.admin() 
+@slot('sidebar')
+    @include('partials/sidebar.edge')
+@endslot
+@slot('main')
+    <h1>Edit Product</h1>
+    <form action="/admin/products/{{product.id}}?_method=put" method="post">
+        {{csrfField()}}
+        <label>Name</label>
+        <input type="text" name="name" value="{{product.name}}">
+
+        <label>Description</label>
+        <textarea name="description">{{product.description}}</textarea>
+                
+        <label>Category</label>
+        <input type="text" name="category" value="{{product.category}}">
+                
+        <label>Price</label>
+        <input type="text" name="price" value="{{product.price}}">
+                
+        <label>Stock</label>
+        <input type="text" name="stock" value="{{product.stock}}">
+
+        <label>Image</label>
+        <input type="text" name="imageUrl" value="{{product.imageUrl}}">
+        <button type="submit">Save Changes</button>
+    </form>
+@endslot
+@end

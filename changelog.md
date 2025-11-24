@@ -23,3 +23,9 @@ Date : 20/11/2025
 - Functional user editing page
 - Implemented cart, wishlist, transaction (still buggy)
 - Improved pages accessibility
+
+**VER 0.4.0**
+Date : 24/11/2025
+- Added admin CRUD and pages
+- Added Category and Sold to products
+- Added Role to users

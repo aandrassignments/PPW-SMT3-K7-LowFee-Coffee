@@ -54,6 +54,7 @@ router.group(()=>{
 router.post('/logout', [AuthController, 'logout']).use(middleware.auth())
 
 //ADMIN SECTION
+const AdminDashboardController=()=>import('#controllers/admin/admin_dashboard_controller')
 const AdminUserController=()=>import('#controllers/admin/admin_users_controller')
 const AdminProductController=()=>import('#controllers/admin/admin_products_controller')
 router.group(()=>{
@@ -71,10 +72,13 @@ router.group(()=>{
         router.get('/', [AdminProductController, 'index'])
         router.get('/create', [AdminProductController, 'create'])
         router.post('/', [AdminProductController, 'store'])
-        router.get('/:id', [AdminProductController, 'edit'])
+        router.get('/:id/edit', [AdminProductController, 'edit'])
         router.put('/:id', [AdminProductController, 'update'])
         router.delete('/:id', [AdminProductController, 'destroy'])
     }).prefix('/products')
+
+    //ADMIN DASHBOARD SECTION
+    router.get('/',[AdminDashboardController, 'index'])
 
 }).prefix('/admin').use([middleware.auth(),middleware.admin()])
 

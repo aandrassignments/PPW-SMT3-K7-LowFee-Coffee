@@ -5,11 +5,12 @@ import { AdminCreateProductValidator, AdminUpdateProductValidator } from '#valid
 export default class AdminProductsController{
     async index({view}:HttpContext){
         const products=await Product.all()
-        return view.render('admin/products/index', {products})
+        return view.render('pages/admin/products/index', {products})
     }
 
     async create({view}:HttpContext){
-        return view.render('admin/products/create')
+        const products=await Product.all()
+        return view.render('pages/admin/products/create', {products})
     }
 
     async store({request,response}:HttpContext){
@@ -21,7 +22,7 @@ export default class AdminProductsController{
 
     async edit({params, view}:HttpContext){
         const product = await Product.findOrFail(params.id)
-        return view.render('admin/products/edit', {product})
+        return view.render('pages/admin/products/edit', {product})
     }
 
     async update({params, request, response}:HttpContext){

@@ -1,0 +1,44 @@
+@layout.admin() 
+@slot('sidebar')
+    @include('partials/sidebar.edge')
+@end
+@slot('main')
+    <h1>Products</h1>
+    <a href="/admin/products/create">Add New Product</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                {{-- <th>Description</th> --}}
+                {{-- <th>Category</th> --}}
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Sold</th>
+                {{-- <th>Image</th> --}}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @each(product in products)
+                <tr>
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    {{-- <td>{{product.description}}</td> --}}
+                    <td>{{product.price}}</td>
+                    <td>{{product.stock}}</td>
+                    <td>{{product.sold}}</td>
+                    {{-- <td>{{product.imageUrl}}</td> --}}
+                    <td>
+                        <a href="/admin/products/{{product.id}}/edit">Edit</a>
+                        <form action="/admin/products/{{product.id}}?_method=delete" method="post">
+                            {{csrfField()}}
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @end
+        </tbody>
+    </table>
+@end
+@end
