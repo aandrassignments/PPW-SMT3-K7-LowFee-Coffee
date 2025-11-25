@@ -1,0 +1,14 @@
+@flashMessage('notification')
+  <div class="flash-server"
+       data-type="{{ $message.type }}"
+       data-message="{{ $message.message }}">
+  </div>
+@end
+
+@inputError('title')
+<div class="input-error">
+  @each(message in $messages)
+    <p>{{ message }}</p>
+  @endeach
+</div>
+@end

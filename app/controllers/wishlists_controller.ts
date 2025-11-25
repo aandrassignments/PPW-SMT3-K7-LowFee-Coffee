@@ -10,12 +10,13 @@ export default class WishlistsController {
         return view.render('pages/wishlist', {wishlists})
     }
 
-    async store({request, response, auth}: HttpContext){
+    async store({request, response, auth, session}: HttpContext){
         const data =await request.validateUsing(WishlistStoreValidator)
         const user=auth.user!
         await Product.findOrFail(data.productId)
         await Wishlist.firstOrCreate({userId:user.id, productId:data.productId})
-        return response.redirect('/wishlist')
+        session.flash({notification:{type:'success', message:'added to wishlist'}})
+        return response.redirect().back()
     }
 
     async destroy({params, response, auth}:HttpContext){

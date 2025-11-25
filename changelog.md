@@ -29,3 +29,7 @@ Date : 24/11/2025
 - Added admin CRUD and pages
 - Added Category and Sold to products
 - Added Role to users
+
+**VER 0.4.1**
+- Added toast products when adding to wishlist and cart
+- 

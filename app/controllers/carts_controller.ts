@@ -12,13 +12,14 @@ export default class CartsController {
         return view.render('pages/cart', {cartItems, total})
     }
 
-    async store({request, response, auth}:HttpContext){
+    async store({request, response, auth, session}:HttpContext){
         const user=auth.user!
         const data = await request.validateUsing(CartStoreValidator)
         const product=await Product.findOrFail(data.productId)
 
         if (data.quantity>product.stock){
-            return response.redirect('/cart')
+            session.flash({notification:{type:'error', message:'Not enough stock'}})
+            return response.redirect().back()
         }
 
         const existingCartItem=await Cart.query().where('userId', user.id).where('productId', data.productId).first()
@@ -27,15 +28,19 @@ export default class CartsController {
             const newQuantity=existingCartItem.quantity+data.quantity
 
             if (newQuantity>product.stock){
-                return response.redirect('/cart')
+                session.flash({notification:{type:'error', message:'Cannot add more than available stock'}})
+                return response.redirect().back()
             }
 
             existingCartItem.quantity=newQuantity
             await existingCartItem.save()
-            return response.redirect('/cart')
+            session.flash({notification:{type:'success', message:'Quantity updated'}})
+            return response.redirect().back()
         }
 
         await Cart.create({userId:user.id, productId:data.productId, quantity:data.quantity})
+        session.flash({notification:{type:'success', message:'Added to cart'}})
+        return response.redirect().back()
     }
 
     async update({params, request, response}:HttpContext){

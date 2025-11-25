@@ -15,6 +15,9 @@
 
 <body>
   <div class="page wrapper">
+    @include('partials/flash.edge') 
+    <div id="toast-container"></div>
+
     @include('partials/header.edge')
 
     <main class="main-content">
@@ -24,5 +27,5 @@
     @include('partials/footer.edge')
   </div>
 </body>
-
+@vite('resources/js/toast.js')
 </html>
