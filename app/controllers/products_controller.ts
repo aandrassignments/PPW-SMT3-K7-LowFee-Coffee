@@ -1,5 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Product from "#models/product";
+import db from '@adonisjs/lucid/services/db';
 
 export default class ProductsController {
 
@@ -13,6 +14,15 @@ export default class ProductsController {
     async show({params, view}:HttpContext){
         const product=await Product.findOrFail(params.id)
         return view.render('pages/details', {product})
+    }
+
+    async search({request, response}:HttpContext){
+        const searchInput= (request.input('searchInput')||'').toLowerCase()
+        if(!searchInput){
+            return response.json({data:[]})
+        }
+        const results=await db.from('products').whereRaw('LOWER(name) LIKE ?', [`%${searchInput}%`]).select(['id', 'name'])
+        return response.json({data:results})
     }
 
     //for seeding purposes, we can change later to use adonis seeding but this'll be sufficient

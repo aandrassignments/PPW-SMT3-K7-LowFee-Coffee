@@ -23,7 +23,7 @@ export default class Product extends BaseModel {
   @column()
   declare sold:number
 
-  @column()
+  @column({columnName:'image_url'})
   declare imageUrl: string|null
 
   @column.dateTime({ autoCreate: true })
