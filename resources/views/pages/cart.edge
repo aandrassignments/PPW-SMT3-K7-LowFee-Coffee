@@ -19,7 +19,6 @@
             <p>Subtotal : $/IDR {{item.product.price*item.quantity}}</p>
             <form action="/cart/{{item.id}}?_method=DELETE" method="POST">
               {{csrfField()}}
-              {{-- <input type="hidden" name="_method" value="DELETE"> --}}
               <button type="submit">Remove</button>
             </form>
           </div>

@@ -1,0 +1,33 @@
+@layout.admin({title:'Transactions'}) 
+@slot('sidebar')
+    @include('partials/sidebar.edge')
+    @vite('resources/css/adminTable.css')
+@endslot
+@slot('main')
+    <h1>Transactions</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>User</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @each(transaction in transactions)
+                <tr>
+                    <td>{{transaction.id}}</td>
+                    <td>{{transaction.user.fullName}}</td>
+                    <td>{{transaction.totalPrice}}</td>
+                    <td>{{transaction.paymentStatus}}</td>
+                    <td>{{transaction.createdAt}}</td>
+                    <td><a href="/admin/transactions/{{ transaction.id }}">View</a></td>
+                </tr>
+            @endeach
+        </tbody>
+    </table>
+@endslot
+@end

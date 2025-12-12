@@ -1,13 +1,28 @@
 @layout.app({title: 'Your Transaction'}) 
+@slot('meta')
+@vite(['resources/css/transactionlist.css'])
+@endslot
 @slot('main')
-    <h1>Your Transaction</h1>
-    @each(transaction in transactions)
-        <div class="">
-            <p>ID: {{ transaction.id }}</p>
-            <p>Total: {{ transaction.totalPrice }}</p>
-            <p>Status: {{ transaction.paymentStatus }}</p>
-            <a href="/transactions/{{ transaction.id }}">View details</a>
-        </div>
-    @endeach
+    <div class="transaction-banner">
+        <h1>Your Transaction</h1>
+    </div>
+    <div class="transaction-container">
+        @if(transaction?.length===0)
+            <div class="transaction-empty">
+                You Have No Transactions Yet
+            </div>
+        @else
+            <div class="transaction-list">
+                @each(transaction in transactions)
+                    <div class="transaction-item">
+                        <p>ID: {{ transaction.id }}</p>
+                        <p>Total: {{ transaction.totalPrice }}</p>
+                        <p>Status: {{ transaction.paymentStatus }}</p>
+                        <a href="/transactions/{{ transaction.id }}">View details</a>
+                    </div>
+                @endeach
+            </div>
+        @endif
+    </div>
 @endslot
 @end

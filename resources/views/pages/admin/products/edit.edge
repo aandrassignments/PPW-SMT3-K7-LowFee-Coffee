@@ -1,10 +1,11 @@
-@layout.admin() 
+@layout.admin ({title:'Products'})
 @slot('sidebar')
     @include('partials/sidebar.edge')
+    @vite('resources/css/adminForm.css')
 @endslot
 @slot('main')
     <h1>Edit Product</h1>
-    <form action="/admin/products/{{product.id}}?_method=put" method="post">
+    <form action="/admin/products/{{product.id}}?_method=put" method="post" enctype="multipart/form-data">
         {{csrfField()}}
         <label>Name</label>
         <input type="text" name="name" value="{{product.name}}">
@@ -21,9 +22,16 @@
         <label>Stock</label>
         <input type="text" name="stock" value="{{product.stock}}">
 
-        <label>Image</label>
-        <input type="text" name="imageUrl" value="{{product.imageUrl}}">
+        <label>Current Image</label>
+        <img src="{{ product.imageUrl }}">  
+        
+        <label>New Image (optional)</label>
+        <input type="file" name="image" id="image-input">
+        <img id="image-preview" style="display:none;">
         <button type="submit">Save Changes</button>
     </form>
+@endslot
+@slot('scripts')
+    @vite('resources/js/imagePreview.js')
 @endslot
 @end

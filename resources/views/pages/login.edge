@@ -4,25 +4,25 @@
 @vite(['resources/css/login.css'])
 @endslot
 @slot('main')
-<div class="auth-container">
+<div class="log-container">
   <h1>Welcome Back</h1>
-  <p>Sign in to continue</p>
+  <p class="log-desc">Sign in to continue</p>
 
-  <form action="/login" method="post" class="auth-form">
+  <form action="/login" method="post" class="log-form">
     {{csrfField()}}
-    <div class="input-group">
+    <div class="log-input-group">
       <label for="email">Email</label>
       <input type="email" id="email" name="email" required>
     </div>
 
-    <div class="input-group">
+    <div class="log-input-group">
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required>
     </div>
 
-    <button type="submit" class="btn-auth">Login</button>
+    <button type="submit" class="log-btn">Login</button>
 
-    <p class="switch">
+    <p class="log-switch">
       don't have an account? <a href="/register">Create one</a>
     </p>
   </form>

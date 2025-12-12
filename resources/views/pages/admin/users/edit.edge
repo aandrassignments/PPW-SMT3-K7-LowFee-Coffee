@@ -1,10 +1,11 @@
-@layout.admin({title:''}) 
+@layout.admin ({title:'User'}) 
 @slot('sidebar')
     @include('partials/sidebar.edge')
+    @vite('resources/css/adminForm.css')
 @endslot
 @slot('main')
     <h1>Edit User</h1>
-    <form action="/admin/users/{{user.id}}" method="post">
+    <form action="/admin/users/{{user.id}}?_method=put" method="post">
         {{csrfField()}}
         <div>
             <label class="">Full Name</label>
@@ -16,7 +17,7 @@
             <label class="">Role</label>
             <select name="role">
                 <option value="user" {{user.role==='user'?'selected' : ''}}>User</option>
-                <option value="admin {{user.role==='admin'?'selected' : ''}}">Admin</option>
+                <option value="admin" {{user.role==='admin'?'selected' : ''}}>Admin</option>
             </select>
         </div>
         <button type="submit">Save Changes</button>

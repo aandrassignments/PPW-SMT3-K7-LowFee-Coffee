@@ -1,31 +1,32 @@
 @layout.app({title:'register'})
     @slot('meta')
         @vite(['resources/css/footerheader.css'])
+        @vite('resources/css/register.css')
     @endslot
     @slot('main')
-        <div class="auth-container">
+        <div class="reg-container">
             <h1>Create an Account</h1>
-            <p>Lorem ipsum dolor sit amet...</p>
-            <form action="/register" method="post" class="auth-form">
+            <p class="reg-desc">Lorem ipsum dolor sit amet...</p>
+            <form action="/register" method="post" class="reg-form">
                 {{ csrfField() }}
-                <div class="input-group">
+                <div class="reg-input-group">
                     <label for="fullName">Full Name</label>
                     <input type="text" id="fullName" name="fullName" required>
                 </div>
-                <div class="input-group">
+                <div class="reg-input-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                <div class="input-group">
+                <div class="reg-input-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <div class="input-group">
+                <div class="reg-input-group">
                     <label for="password_confirmation">Confirm Password</label>
                     <input type="password" id="password_confirmation" name="password_confirmation" required>
                 </div>
-                <button type="submit" class="btn-auth">Register</button>
-                <p class="switch">
+                <button type="submit" class="reg-btn">Register</button>
+                <p class="reg-switch">
                     Already Have an account? <a href="/login">Login</a>
                 </p>
             </form>

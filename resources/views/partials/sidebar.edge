@@ -3,6 +3,13 @@
     <li><a href="/admin">Dashboard</a></li>
     <li><a href="/admin/users">Users</a></li>
     <li><a href="/admin/products">Products</a></li>
-    <li><a href="/logout">Logout</a></li>
+    <li><a href="/admin/transactions">Transactions</a></li>
+    <li>
+      <form action="/logout" method="post">
+        {{csrfField()}}
+        <button type="submit">Logout</button>
+      </form>
+    </li>
+    <li><a href="/">Back to Home</a></li>
   </ul>
 </nav>

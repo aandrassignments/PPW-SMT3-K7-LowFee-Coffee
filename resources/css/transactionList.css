@@ -1,0 +1,77 @@
+/* ===== TRANSACTION BANNER ===== */
+.transaction-banner {
+  background-color: #8B4513;
+  height: 200px;
+  padding-top: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.transaction-banner h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ===== CONTAINER ===== */
+.transaction-container {
+  padding: 60px 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ===== LIST ===== */
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ===== CARD ===== */
+.transaction-item {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.transaction-item:hover {
+  transform: translateY(-3px);
+}
+
+/* ===== TEXT ===== */
+.transaction-item p {
+  margin: 6px 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* ===== DETAILS BUTTON ===== */
+.transaction-item a {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #8B4513;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.transaction-item a:hover {
+  background-color: #A6622A;
+}
+
+/* ===== EMPTY ===== */
+.transaction-empty {
+  text-align: center;
+  padding: 100px 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #555;
+}

@@ -35,3 +35,8 @@ Date : 24/11/2025
 
 **VER 0.4.2**
 - Working search bar (using JSON)
+- Fixed user and product CRUD for admin
+
+**VER 0.4.3**
+- Fixed admin's products and users page not updating
+- Added admin transaction page

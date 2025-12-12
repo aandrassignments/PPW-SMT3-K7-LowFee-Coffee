@@ -1,0 +1,51 @@
+/* ===== DETAILS BANNER ===== */
+.transaction-details-banner {
+  background-color: #8B4513;
+  height: 200px;
+  padding-top: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.transaction-details-banner h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ===== CONTAINER ===== */
+.transaction-details-container {
+  padding: 60px 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.transaction-details-container p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+/* ===== ITEMS LIST ===== */
+.transaction-items {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.transaction-items-item {
+  background: #fff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.transaction-items-item p {
+  margin: 5px 0;
+  font-size: 1rem;
+  font-weight: 600;
+}

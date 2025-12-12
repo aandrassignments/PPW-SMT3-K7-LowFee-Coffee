@@ -1,6 +1,7 @@
-@layout.admin()
+@layout.admin ({title:'User'})
 @slot('sidebar')
     @include('partials/sidebar.edge')
+    @vite('resources/css/adminTable.css')
 @endslot
 @slot('main')
     <h1>Manage Users</h1>

@@ -1,6 +1,6 @@
-/* -------- LOGIN PAGE -------- */
+/* -------- REGISTER PAGE -------- */
 
-.log-container {
+.reg-container {
   max-width: 420px;
   margin: 40px auto;
   padding: 30px;
@@ -10,37 +10,37 @@
   text-align: center;
 }
 
-.log-desc {
+.reg-desc {
   font-size: 14px;
   color: #666;
   margin-bottom: 20px;
 }
 
-.log-form {
+.reg-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
-.log-input-group {
+.reg-input-group {
   text-align: left;
   display: flex;
   flex-direction: column;
 }
 
-.log-input-group label {
+.reg-input-group label {
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.log-input-group input {
+.reg-input-group input {
   padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid #ccc;
 }
 
-.log-btn {
-  background: #26a25a;
+.reg-btn {
+  background: #1d72e8;
   color: #fff;
   padding: 12px;
   border: none;
@@ -50,15 +50,15 @@
   transition: 0.2s;
 }
 
-.log-btn:hover {
-  background: #1e7f47;
+.reg-btn:hover {
+  background: #155bb5;
 }
 
-.log-switch {
+.reg-switch {
   margin-top: 12px;
 }
 
-.log-switch a {
-  color: #26a25a;
+.reg-switch a {
+  color: #1d72e8;
   font-weight: bold;
 }

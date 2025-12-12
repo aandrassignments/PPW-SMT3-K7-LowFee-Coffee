@@ -58,6 +58,7 @@ router.post('/logout', [AuthController, 'logout']).use(middleware.auth())
 const AdminDashboardController=()=>import('#controllers/admin/admin_dashboard_controller')
 const AdminUserController=()=>import('#controllers/admin/admin_users_controller')
 const AdminProductController=()=>import('#controllers/admin/admin_products_controller')
+const AdminTransactionsController=()=>import('#controllers/admin/admin_transactions_controller')
 router.group(()=>{
 
     //ADMIN USER SECTION
@@ -77,6 +78,14 @@ router.group(()=>{
         router.put('/:id', [AdminProductController, 'update'])
         router.delete('/:id', [AdminProductController, 'destroy'])
     }).prefix('/products')
+
+    //ADMIN TRANSACTION SECTION
+    router.group(()=>{
+        router.get('/', [AdminTransactionsController, 'index'])
+        router.get('/:id', [AdminTransactionsController, 'show'])
+        router.put('/:id', [AdminTransactionsController, 'update'])
+    }).prefix('/transactions')
+    
 
     //ADMIN DASHBOARD SECTION
     router.get('/',[AdminDashboardController, 'index'])

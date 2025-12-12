@@ -1,46 +1,49 @@
 @layout.app({title:product.name}) 
  @slot('meta')
-    //@vite([''])
+   @vite('resources/css/productDetails.css')
  @endslot
 
  @slot('main')
-
-   {{--image--}}
-   <div class="img-wrap">
-      <img src="{{product.imageUrl}}" alt="{{product.name}}">
-   </div>
-
-   <div class="info-wrapg">
-      <h1>{{product.name}}</h1>
-      <p class="price">Rp/$ {{product.price}}</p>
-      <p class="stock">Stock : {{product.stock}}</p>
-      <p class="description">{{product.description}}</p>
-      {{--quantity button--}}
-      <div class="quantity-section">
-         <label for="qty">Quantity : </label>
-         <input
-            type="number"
-            id="qty"
-            name="qty"
-            value="1"
-            min="1"
-            max="{{product.stock}}"
-            >
+   <div class="product-details-container">
+      {{--image--}}
+      <div class="product-image-wrapper">
+         <img src="{{product.imageUrl}}" alt="{{product.name}}">
       </div>
-      
-      <div class="action-buttons">
-         <form action="/carts/{{product.id}}" method="post">
-            {{csrfField()}}
-            <input type="hidden" name="quantity" value="1" id="qty-hidden">
-            <button type="submit" class="btn btn-cart">Add to cart</button>
-         </form>
 
-         <form action="/wishlists/{{product.id}}" method="post">
-            {{csrfField()}}
-            <button type="submit" class="btn btn-wishlist">Add to wishlist</button>
-         </form>
+      <div class="info-wrapper">
+         <h1>{{product.name}}</h1>
+         <p class="product-price">Rp/$ {{product.price}}</p>
+         <p class="product-stock">Stock : {{product.stock}}</p>
+         <p class="product-description">{{product.description}}</p>
+         {{--quantity button--}}
+         <div class="quantity-section">
+            <label for="qty">Quantity : </label>
+            <input
+               type="number"
+               id="qty"
+               name="qty"
+               value="1"
+               min="1"
+               max="{{product.stock}}"
+               >
+         </div>
+         
+         <div class="product-actions">
+            <form action="/cart" method="post">
+               {{csrfField()}}
+               <input type="hidden" name="productId" value="{{ product.id }}">
+               <input type="hidden" name="quantity" value="1" id="qty-hidden">
+               <button type="submit" class="btn-cart">Add to cart</button>
+            </form>
+
+            <form action="/wishlist" method="post">
+               {{csrfField()}}
+               <input type="hidden" name="productId" value="{{ product.id }}">
+               <button type="submit" class="btn-wishlist">Add to wishlist</button>
+            </form>
+         </div>
       </div>
    </div>
-   
+   @vite('resources/js/productDetails.js')
  @end
 @end

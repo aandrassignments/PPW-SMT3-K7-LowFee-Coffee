@@ -1,6 +1,6 @@
 <header>
     <a href="/" class="logo-link">
-        <img src="images/logo1.jpg" alt="Coffee Logo" class="logo">
+        <img src="/public/images/logo1.jpg" alt="Coffee Logo" class="logo">
     </a>
     <nav class="nav-box">
         <ul>
@@ -19,7 +19,27 @@
         <div class="header-icons">
             <a href="/wishlist" class="icon-btn">❤️</a>
             <a href="/cart" class="icon-btn">🛒</a>
-            <a href="/login" class="icon-btn">👤</a>
+            {{-- <a href="/login" class="icon-btn">👤</a> --}}
+            <div class="user-menu">
+                <button class="icon-btn user-icon" id="userMenuToggle">👤</button>
+                <div class="user-dropdown hidden" id="userMenuDropdown">
+                    @if(auth && auth.user) 
+                        <a href="/users">Profile</a>
+                        <a href="/transactions">Transactions</a>
+                        @if(auth.user.role==='admin') 
+                            <a href="/admin">Admin Dashboard</a>
+                        @end
+                        <form action="/logout" method="post">
+                            {{csrfField()}}
+                            <button type="submit">Logout</button>
+                        </form>
+                    @else
+                        <a href="/login">Login</a>
+                        <a href="/register">Register</a>
+                    @end
+                </div>
+
+            </div>
         </div>
     </div>
 </header>

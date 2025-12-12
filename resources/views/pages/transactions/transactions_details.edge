@@ -1,17 +1,24 @@
 @layout.app({title: 'Transaction Details'})
-
+@slot('meta')
+  @vite(['resources/css/transactionDetails.css'])
+@endslot
 @slot('main')
-  <h1>Transaction #{{ transaction.id }}</h1>
-  <p>Status: {{ transaction.paymentStatus }}</p>
-  <p>Total: {{ transaction.totalPrice }}</p>
-
-  <h2>Items:</h2>
-  @each(item in transaction.items)
-    <div class="">
-      <p>{{ item.product.name }} x {{ item.quantity }}</p>
-      <p>Price: {{ item.priceEach }}</p>
-      <p>Subtotal: {{ item.priceEach * item.quantity }}</p>
+<div class="transaction-details-banner">
+  <h1>Transaction #{{transaction.id}}</h1>
+</div>
+<div class="transaction-details-container">
+    <p>Status: {{ transaction.paymentStatus }}</p>
+    <p>Total: {{ transaction.totalPrice }}</p>
+    <h2>Items:</h2>
+    <div class="transaction-items">
+        @each(item in transaction.items)
+            <div class="transaction-items-item">
+                <p>{{ item.product.name }} x {{ item.quantity }}</p>
+                <p>Price: {{ item.priceEach }}</p>
+                <p>Subtotal: {{ item.priceEach * item.quantity }}</p>
+            </div>
+        @endeach
     </div>
-  @endeach
+</div>
 @endslot
 @end

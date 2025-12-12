@@ -1,10 +1,11 @@
-@layout.admin() 
+@layout.admin ({title:'Products'}) 
 @slot('sidebar')
     @include('partials/sidebar.edge')
+    @vite('resources/css/adminTable.css')
 @end
 @slot('main')
     <h1>Products</h1>
-    <a href="/admin/products/create">Add New Product</a>
+    <a href="/admin/products/create" class="admin-btn">Add New Product</a>
     <table>
         <thead>
             <tr>

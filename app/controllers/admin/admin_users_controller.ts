@@ -24,12 +24,12 @@ export default class AdminUserController{
         // const data = request.only(['fullName', 'email', 'role'])
         user.merge(data)
         await user.save()
-        return response.redirect('pages/admin/users')
+        return response.redirect('/admin/users')
     }
 
     async destroy({params, response}:HttpContext){
         const user = await User.findOrFail(params.id)
         await user.delete()
-        return response.redirect('pages/admin/users')
+        return response.redirect('/admin/users')
     }
 }

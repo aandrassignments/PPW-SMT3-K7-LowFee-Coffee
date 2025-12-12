@@ -1,0 +1,90 @@
+.admin-content form {
+    background: #fff;
+    padding: 30px 35px;
+    border-radius: 12px;
+    max-width: 550px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 25px;
+}
+
+/* form labels */
+.admin-content form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    color: #4A2E14;
+    font-size: 0.95rem;
+}
+
+/* text inputs, email, number, etc. */
+.admin-content form input[type="text"],
+.admin-content form input[type="email"],
+.admin-content form input[type="number"],
+.admin-content form input[type="file"],
+.admin-content form select,
+.admin-content form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #cbb8a4;
+    background: #faf7f2;
+    font-size: 0.95rem;
+    transition: border 0.2s ease, background 0.2s ease;
+}
+
+.admin-content form input:focus,
+.admin-content form select:focus,
+.admin-content form textarea:focus {
+    border-color: #8B5A2B;
+    background: #fff;
+    outline: none;
+}
+
+/* form button */
+.admin-content form button {
+    margin-top: 10px;
+    padding: 12px 20px;
+    background-color: #8B5A2B;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.25s ease, transform 0.1s ease;
+}
+
+.admin-content form button:hover {
+    background-color: #734821;
+    transform: translateY(-2px);
+}
+
+.admin-content form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+admin-content form img {
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: block;
+}
+
+.admin-content form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.admin-content form input[type="file"] {
+    padding: 8px;
+    background: #fff;
+}
+
+.admin-content form label + img {
+    margin-bottom: 15px;
+}

@@ -1,0 +1,80 @@
+/* ============================
+   EDIT PROFILE PAGE STYLES
+   ============================ */
+
+.edit-profile-page {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+}
+
+.edit-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.edit-card h1 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.edit-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.edit-card label {
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.edit-card input {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.edit-card input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, .2);
+}
+
+hr {
+  margin: 1.5rem 0;
+  border: none;
+  height: 1px;
+  background: #ddd;
+}
+
+.optional {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.small-note {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
+.btn-save {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 1rem;
+}
+
+.btn-save:hover {
+  background: #4338ca;
+}

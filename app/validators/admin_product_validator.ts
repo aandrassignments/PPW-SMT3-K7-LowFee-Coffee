@@ -7,7 +7,10 @@ export const AdminCreateProductValidator = vine.compile(
         category:vine.string().trim(),
         price:vine.number().min(0),
         stock:vine.number().min(0),
-        imageUrl:vine.string().url().optional()
+        image:vine.file({
+            size: '10mb',
+            extnames: ['jpg', 'jpeg', 'png', 'webp']
+        }).optional()
     })
 )
 
@@ -18,6 +21,10 @@ export const AdminUpdateProductValidator = vine.compile(
         category:vine.string().trim().optional(),
         price:vine.number().min(0).optional(),
         stock:vine.number().min(0).optional(),
-        imageUrl:vine.string().url().optional()
+        // imageUrl:vine.string().trim().optional()
+        image:vine.file({
+            size: '10mb',
+            extnames: ['jpg', 'jpeg', 'png', 'webp']
+        }).nullable().optional()
     })
 )

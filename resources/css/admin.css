@@ -1,0 +1,100 @@
+/*GENERAL*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway';
+    background-color: #f8f4ef; 
+    color: #3b2f2f;            
+    min-height: 100vh;
+}
+
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/*SIDEBAR*/
+.admin-sidebar {
+    width: 250px;
+    background-color: #4b3621; 
+    color: #f3e9d2;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+/* Sidebar Navigation */
+.admin-sidebar nav ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.admin-sidebar nav ul li {
+    margin-bottom: 15px;
+}
+
+/* Links and logout button */
+.admin-sidebar a,
+.admin-sidebar button {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    background: none;
+    text-align: left;
+    text-decoration: none;
+    font-size: 16px;
+    color: #f3e9d2;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background 0.2s ease-in-out;
+}
+
+.admin-sidebar a:hover,
+.admin-sidebar button:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/*MAIN CONTENT*/
+.admin-content {
+    margin-left: 250px;
+    padding: 30px;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+}
+
+/*DASHBOARD CARDS*/
+.cards {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-left: 8px solid #c89f72;
+}
+
+.card h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 28px;
+    font-weight: 700;
+    color: #4b3621;
+}

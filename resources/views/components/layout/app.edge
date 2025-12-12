@@ -8,6 +8,7 @@
     <title>{{ title || "Your default title" }}</title>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
     @vite('resources/css/footerheader.css')
+    @vite('resources/css/userMenu.css')
     @if ($slots.meta)
         {{{ await $slots.meta() }}}
     @endif
@@ -29,4 +30,5 @@
 </body>
 @vite('resources/js/toast.js')
 @vite('resources/js/search.js')
+@vite('resources/js/user_menu.js')
 </html>
