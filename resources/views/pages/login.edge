@@ -17,7 +17,10 @@
 
     <div class="log-input-group">
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
+      <div class="password-field">
+        <input type="password" id="password" name="password" required>
+        <button type="button" class="toggle-pass" data-target="password"><i class="fa-solid fa-eye"></i></button>
+      </div>
     </div>
 
     <button type="submit" class="log-btn">Login</button>
@@ -27,5 +30,6 @@
     </p>
   </form>
 </div>
+@vite('resources/js/passwordToggle.js')
 @endslot
 @end

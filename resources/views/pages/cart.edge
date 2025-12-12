@@ -12,14 +12,17 @@
     <main class="cart-container">
       <div id="cartItems" class="cart-grid">
         @each(item in cartItems)
-          <div class="cart-items">
-            <h3>{{item.product.name}}</h3>
-            <p>Qty : {{item.quantity}}</p>
-            <p>Price : $/IDR{{item.product.price}}</p>
-            <p>Subtotal : $/IDR {{item.product.price*item.quantity}}</p>
-            <form action="/cart/{{item.id}}?_method=DELETE" method="POST">
+          <div class="cart-item-card">
+            <img src="{{item.product.imageUrl}}" alt="{{item.product.name}}" class="cart-item-image">
+            <div class="cart-item-info">
+              <h3>{{item.product.name}}</h3>
+              <p>Qty : {{item.quantity}}</p>
+              <p>Price : $/IDR{{item.product.price}}</p>
+              <p>Subtotal : $/IDR {{item.product.price*item.quantity}}</p>
+            </div>
+            <form action="/cart/{{item.id}}?_method=DELETE" method="POST" class="cart-remove-form">
               {{csrfField()}}
-              <button type="submit">Remove</button>
+              <button type="submit" class="remove-btn"><i class="fa-solid fa-trash"></i> Remove</button>
             </form>
           </div>
         @end
@@ -29,7 +32,7 @@
         <p>Total: <span id="cartTotal">${{total}}</span></p>
         <form action="/transactions" method="post">
           {{csrfField()}}
-          <button id="checkoutBtn">Checkout</button>
+          <button id="checkoutBtn" class="checkout-btn"><i class="fa-solid fa-credit-card"></i> Checkout</button>
         </form>
       </div>
     </main>

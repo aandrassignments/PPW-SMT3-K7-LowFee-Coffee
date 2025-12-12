@@ -23,13 +23,13 @@
                         <form method="post" action="/wishlist">
                             {{ csrfField() }}
                             <input type="hidden" name="productId" value="{{product.id}}">
-                            <button type="submit" class="add-to-wishlist">❤️</button>
+                            <button type="submit" class="add-to-wishlist"><i class="fa-solid fa-heart"></i></button>
                         </form>
                         <form action="/cart" method="post">
                             {{csrfField()}}
                             <input type="hidden" name="productId" value="{{product.id}}">
                             <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="add-to-cart">🛒</button>
+                            <button type="submit" class="add-to-cart"><i class="fa-solid fa-cart-shopping"></i></button>
                         </form>
                     </a>
                 @endeach

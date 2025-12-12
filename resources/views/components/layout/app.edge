@@ -7,6 +7,7 @@
     {{-- <title>Homework 1 - Products</title> --}}
     <title>{{ title || "Your default title" }}</title>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     @vite('resources/css/footerheader.css')
     @vite('resources/css/userMenu.css')
     @if ($slots.meta)
@@ -15,7 +16,7 @@
 </head>
 
 <body>
-  <div class="page wrapper">
+  <div class="page-wrapper">
     @include('partials/flash.edge') 
     <div id="toast-container"></div>
 

@@ -17,11 +17,11 @@
             <div id="searchResults" class="search-results"></div>
         </div>
         <div class="header-icons">
-            <a href="/wishlist" class="icon-btn">❤️</a>
-            <a href="/cart" class="icon-btn">🛒</a>
+            <a href="/wishlist" class="icon-btn"><i class="fa-solid fa-heart"></i></a>
+            <a href="/cart" class="icon-btn"><i class="fa-solid fa-cart-shopping"></i></a>
             {{-- <a href="/login" class="icon-btn">👤</a> --}}
             <div class="user-menu">
-                <button class="icon-btn user-icon" id="userMenuToggle">👤</button>
+                <button class="icon-btn user-icon" id="userMenuToggle"><i class="fa-solid fa-user"></i></button>
                 <div class="user-dropdown hidden" id="userMenuDropdown">
                     @if(auth && auth.user) 
                         <a href="/users">Profile</a>

@@ -5,11 +5,11 @@
   align-items: center;
   color: white;
   text-align: center;
-  padding: 120px 20px 40px; /* spacing top and bottom */
+  padding: 120px 20px 40px;
   background-size: cover;
   background-position: center;
   overflow: hidden;
-  height: auto; /* 🔥 remove any fixed height */
+  height: auto;
 }
 
 

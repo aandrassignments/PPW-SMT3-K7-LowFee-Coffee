@@ -170,3 +170,24 @@ footer p{
 .footer-links a:hover{
     text-decoration: underline;
 }
+
+.icon-btn .fa-heart {
+  color: #ff3366;
+}
+.icon-btn .fa-heart:hover {
+  color: #ff6b88;
+}
+
+.icon-btn .fa-cart-shopping {
+  color: #2ecc71;
+}
+.icon-btn .fa-cart-shopping:hover {
+  color: #48e68f;
+}
+
+.user-icon .fa-user {
+  color: #3498db;
+}
+.user-icon .fa-user:hover {
+  color: #5eb4f5;
+}
