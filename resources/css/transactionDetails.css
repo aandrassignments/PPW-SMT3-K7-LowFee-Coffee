@@ -1,4 +1,3 @@
-/* ===== DETAILS BANNER ===== */
 .transaction-details-banner {
   background-color: #8B4513;
   height: 200px;
@@ -16,7 +15,6 @@
   margin: 0;
 }
 
-/* ===== CONTAINER ===== */
 .transaction-details-container {
   padding: 60px 30px;
   max-width: 900px;
@@ -29,7 +27,6 @@
   margin: 10px 0;
 }
 
-/* ===== ITEMS LIST ===== */
 .transaction-items {
   margin-top: 35px;
   display: flex;

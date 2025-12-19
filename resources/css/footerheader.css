@@ -109,7 +109,7 @@ header{
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   max-height: 250px;
   overflow-y: auto;
-  display: none; /* hidden by default */
+  display: none;
   z-index: 200;
 }
 

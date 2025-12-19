@@ -1,7 +1,10 @@
 # Dependencies and AdonisJS build
-node_modules
-build
-tmp
+node_modules/
+build/
+
+#sqlite3 folder
+tmp/*
+!tmp/.gitkeep
 
 # Secrets
 .env
@@ -9,17 +12,14 @@ tmp
 .env.production.local
 .env.development.local
 
-# Frontend assets compiled code
-public/assets
-
-# Build tools specific
+# Logs
 npm-debug.log
 yarn-error.log
 
-# Editors specific
-.fleet
-.idea
-.vscode
+# Editors
+.fleet/
+.idea/
+.vscode/
 
-# Platform specific
+# OS
 .DS_Store

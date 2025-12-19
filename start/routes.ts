@@ -98,3 +98,4 @@ router.get('/', [HomeController, 'index'])
 
 //STATIC SECTION
 router.on('/about').render('pages/static/about')
+router.on('/contact').render('pages/static/contact')

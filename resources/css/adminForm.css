@@ -10,7 +10,6 @@
     margin-top: 25px;
 }
 
-/* form labels */
 .admin-content form label {
     font-weight: 600;
     margin-bottom: 5px;
@@ -19,7 +18,6 @@
     font-size: 0.95rem;
 }
 
-/* text inputs, email, number, etc. */
 .admin-content form input[type="text"],
 .admin-content form input[type="email"],
 .admin-content form input[type="number"],
@@ -43,7 +41,6 @@
     outline: none;
 }
 
-/* form button */
 .admin-content form button {
     margin-top: 10px;
     padding: 12px 20px;

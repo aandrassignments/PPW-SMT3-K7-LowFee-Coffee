@@ -8,14 +8,14 @@
 </div>
 <div class="transaction-details-container">
     <p>Status: {{ transaction.paymentStatus }}</p>
-    <p>Total: {{ transaction.totalPrice }}</p>
+    <p>Total: Rp. {{ transaction.totalPrice }}</p>
     <h2>Items:</h2>
     <div class="transaction-items">
         @each(item in transaction.items)
             <div class="transaction-items-item">
                 <p>{{ item.product.name }} x {{ item.quantity }}</p>
-                <p>Price: {{ item.priceEach }}</p>
-                <p>Subtotal: {{ item.priceEach * item.quantity }}</p>
+                <p>Price: Rp. {{ item.priceEach }}</p>
+                <p>Subtotal: Rp. {{ item.priceEach * item.quantity }}</p>
             </div>
         @endeach
     </div>

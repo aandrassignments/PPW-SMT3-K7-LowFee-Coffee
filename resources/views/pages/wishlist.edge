@@ -12,9 +12,11 @@
   <div id="wishlistItems" class="wishlist-grid">
     @each(wishlist in wishlists)
       <div class="wishlist-item">
-        <img src="{{wishlist.product.imageUrl}}">
-        <p>{{wishlist.product.name}}</p>
-        <p>{{wishlist.product.price}}</p>
+        <a href="/products/{{ wishlist.product.id }}" class="wishlist-link">
+          <img src="{{wishlist.product.imageUrl}}">
+          <p>{{wishlist.product.name}}</p>
+          <p>Rp. {{wishlist.product.price}}</p>
+        </a>
         <form action="/wishlist/{{wishlist.id}}?_method=DELETE" method="POST">
           {{csrfField()}}
           <button type="submit">Remove</button>

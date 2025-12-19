@@ -16,7 +16,7 @@
                 @each(transaction in transactions)
                     <div class="transaction-item">
                         <p>ID: {{ transaction.id }}</p>
-                        <p>Total: {{ transaction.totalPrice }}</p>
+                        <p>Total: Rp. {{ transaction.totalPrice }}</p>
                         <p>Status: {{ transaction.paymentStatus }}</p>
                         <a href="/transactions/{{ transaction.id }}">View details</a>
                     </div>

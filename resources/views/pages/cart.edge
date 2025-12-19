@@ -16,9 +16,20 @@
             <img src="{{item.product.imageUrl}}" alt="{{item.product.name}}" class="cart-item-image">
             <div class="cart-item-info">
               <h3>{{item.product.name}}</h3>
-              <p>Qty : {{item.quantity}}</p>
-              <p>Price : $/IDR{{item.product.price}}</p>
-              <p>Subtotal : $/IDR {{item.product.price*item.quantity}}</p>
+              {{-- <p>Qty : {{item.quantity}}</p> --}}
+              <form action="/cart/{{item.id}}?_method=PUT" method="POST" class="cart-qty-form auto-submit">
+                {{csrfField()}}
+                <input 
+                  type="number" 
+                  name="quantity" 
+                  value="{{item.quantity}}" 
+                  min="1"
+                  class="qty-input"
+                />
+                <button type="submit">Save</button>
+              </form>
+              <p>Price : Rp. {{item.product.price}}</p>
+              <p>Subtotal : Rp. {{item.product.price*item.quantity}}</p>
             </div>
             <form action="/cart/{{item.id}}?_method=DELETE" method="POST" class="cart-remove-form">
               {{csrfField()}}
@@ -29,13 +40,12 @@
       </div>
 
       <div class="cart-summary">
-        <p>Total: <span id="cartTotal">${{total}}</span></p>
+        <p>Total: <span id="cartTotal">Rp. {{total}}</span></p>
         <form action="/transactions" method="post">
           {{csrfField()}}
           <button id="checkoutBtn" class="checkout-btn"><i class="fa-solid fa-credit-card"></i> Checkout</button>
         </form>
       </div>
     </main>
-
   @endslot
 @end

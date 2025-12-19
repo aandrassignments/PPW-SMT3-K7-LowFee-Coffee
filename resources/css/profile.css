@@ -1,11 +1,10 @@
-/* ============================
-   PROFILE PAGE STYLES
-   ============================ */
-
 .profile-page {
   max-width: 600px;
-  margin: 3rem auto;
-  padding: 1.5rem;
+  margin: 6rem auto 3rem;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
 }
 
 .profile-header {
@@ -16,17 +15,18 @@
 .profile-header h1 {
   font-size: 2rem;
   font-weight: 600;
+  margin-bottom: 0.3rem;
 }
 
 .profile-header .email {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #666;
 }
 
 .profile-actions {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.9rem;
   margin-top: 2rem;
 }
 
@@ -37,41 +37,96 @@
 
 .btn-edit,
 .btn-logout,
-.btn-delete {
+.btn-delete,
+.btn-confirm {
   width: 100%;
-  padding: 0.8rem 1rem;
-  background: #4f46e5;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
+  padding: 0.85rem 1rem;
   font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
 }
 
-.btn-edit:hover {
+.btn-edit,
+.btn-confirm {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+.btn-edit:hover,
+.btn-confirm:hover {
   background: #4338ca;
 }
 
 .btn-logout {
   background: #2d6cdf;
+  color: #ffffff;
 }
 
 .btn-logout:hover {
   background: #1e4ab9;
 }
 
+
 .danger-zone {
   margin-top: 2.5rem;
-  border-top: 1px solid #ddd;
   padding-top: 1.5rem;
+  border-top: 1px solid #e5e5e5;
 }
 
 .btn-delete {
   background: #dc2626;
+  color: #ffffff;
 }
 
 .btn-delete:hover {
   background: #b91c1c;
+}
+
+.profile-page form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  margin-top: 1rem;
+}
+
+.profile-page form input {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.profile-page form input:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+
+.btn-confirm {
+  margin-top: 1.8rem;
+}
+
+.profile-page a,
+.profile-page button {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+
+.profile-page a:visited,
+.profile-page a:hover,
+.profile-page a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.btn-edit {
+  color: white !important;
 }

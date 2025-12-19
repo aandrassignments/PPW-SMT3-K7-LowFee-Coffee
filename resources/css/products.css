@@ -113,12 +113,6 @@
   font-weight: normal;
 }
 
-/* .card h3 {
-  position: relative;
-  margin: 20px;
-  z-index: 1;
-} */
-
 .card:hover {
   transform: scale(1.05);
 }
@@ -194,7 +188,7 @@
 }
 
 .card {
-  position: relative; /* we keep this */
+  position: relative; 
 }
 
 .card .add-to-wishlist,
@@ -246,8 +240,8 @@
 }
 
 .card .add-to-cart {
-  right: 70px; /* So it doesn’t overlap the heart */
-  color: #2ecc71; /* Soft green = cart vibes */
+  right: 70px; 
+  color: #2ecc71; 
 }
 
 .card .add-to-cart:hover {
